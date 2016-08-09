@@ -114,19 +114,19 @@ public class GestureLockView extends View implements Handler.Callback {
 	protected void onLayout(boolean changed, int left, int top, int right,
 			int bottom) {
 		super.onLayout(changed, left, top, right, bottom);
-		int perWidthSize= getWidth() / 7;
-		int perHeightSize=getHeight() / 6;
+        int size = getWidth() > getHeight() ? getHeight() : getWidth();
+		int perSize = size / 6;
 		// 初始化圆的参数
-		if(null == mCircles && perWidthSize > 0 && perHeightSize > 0){
+		if(null == mCircles && perSize > 0){
 			mCircles = new Circle[9];
             Circle circle;
 			for(int i = 0; i < 3; i++) {
 				for(int j = 0; j < 3;j++) {
 					circle = new Circle();
 					circle.code = i * 3 + j;
-					circle.x = perWidthSize * (j * 2 + 1.5f) + 0.5f;
-					circle.y = perHeightSize * ( i * 2 + 1) + 0.5f;
-					circle.r = perWidthSize * 0.6f;
+					circle.x = perSize * (j * 2 + 1.5f) + 0.5f;
+					circle.y = perSize * ( i * 2 + 1) + 0.5f;
+					circle.r = perSize * 0.6f;
 					mCircles[i * 3 + j] = circle;
 				}
 			}
